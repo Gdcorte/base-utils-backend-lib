@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gdcorte_base_backend_utils"
+version = "0.0.1"
+authors = [
+  { name="Gustavo Diniz da Corte", email="gustavodacorte@gmail.com" },
+]
+description = "Simple package with utility functions for everyday projects in Python"
+readme = "readme.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Gdcorte/base-utils-backend-lib"
+"Bug Tracker" = "https://github.com/Gdcorte/base-utils-backend-lib/issues"
