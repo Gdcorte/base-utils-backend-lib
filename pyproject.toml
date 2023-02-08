@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gdcorte_base_backend_utils"
-version = "0.0.1"
+name = "gdcbeutils"
+version = "0.0.2"
 authors = [
   { name="Gustavo Diniz da Corte", email="gustavodacorte@gmail.com" },
 ]
@@ -20,3 +20,11 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/Gdcorte/base-utils-backend-lib"
 "Bug Tracker" = "https://github.com/Gdcorte/base-utils-backend-lib/issues"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+[tool.pylint.MASTER]
+load-plugins = "pylint_pydantic"
