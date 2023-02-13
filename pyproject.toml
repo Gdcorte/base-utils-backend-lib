@@ -21,10 +21,5 @@ classifiers = [
 "Homepage" = "https://github.com/Gdcorte/base-utils-backend-lib"
 "Bug Tracker" = "https://github.com/Gdcorte/base-utils-backend-lib/issues"
 
-[tool.pytest.ini_options]
-pythonpath = [
-  "src"
-]
-
 [tool.pylint.MASTER]
 load-plugins = "pylint_pydantic"

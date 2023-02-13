@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 pydantic = "*"
+pymongo = "*"
+python-dotenv = "*"
+mysqlclient = "*"
 
 [dev-packages]
 pytest = "*"
