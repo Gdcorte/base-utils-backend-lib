@@ -8,6 +8,7 @@ pydantic = "*"
 pymongo = "*"
 python-dotenv = "*"
 mysqlclient = "*"
+python-dateutil = "*"
 
 [dev-packages]
 pytest = "*"
