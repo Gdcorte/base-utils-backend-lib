@@ -35,10 +35,17 @@ class SqlConnector:
 
     use_root: bool
     db_name: str | None
+    prefix: str | None
 
-    def __init__(self, use_root: bool = False, db_name: str | None = None) -> None:
+    def __init__(
+        self,
+        use_root: bool = False,
+        db_name: str | None = None,
+        prefix: str | None = None,
+    ) -> None:
         self.use_root = use_root
         self.db_name = db_name
+        self.prefix = prefix
 
     def db_params_from_env_file(self) -> MySqlConnectParams:
         """
@@ -51,11 +58,13 @@ class SqlConnector:
         - MYSQL_PORT
         """
         try:
+            key_prefix = f"MYSQL_{self.prefix}" if self.prefix else "MYSQL"
+
             credentials = MySqlConnectParams(
-                user=environ["MYSQL_USER"],
-                password=environ["MYSQL_PASSWORD"],
-                host=environ["MYSQL_HOST"],
-                port=environ["MYSQL_PORT"],
+                user=environ[f"{key_prefix}_USER"],
+                password=environ[f"{key_prefix}_PASSWORD"],
+                host=environ[f"{key_prefix}_HOST"],
+                port=environ[f"{key_prefix}_PORT"],
                 database=self.db_name,
             )
 
@@ -132,6 +141,8 @@ class SqlHelper(SqlConnector):
     Super class from SqlConnector which specifies one DB for operations on startup
     """
 
-    def __init__(self, db_name: str | None = None) -> None:
-        database = db_name or environ["MYSQL_DB"]
-        super().__init__(db_name=database)
+    def __init__(self, db_name: str | None = None, prefix: str | None = None) -> None:
+        db_key = f"MYSQL_{prefix}_DB" if prefix else "MYSQL_DB"
+
+        database = db_name or environ[db_key]
+        super().__init__(db_name=database, prefix=prefix)

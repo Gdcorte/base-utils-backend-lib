@@ -48,6 +48,23 @@ def test_can_get_connection_params_from_env_vars():
     assert db_params.password == environ["MYSQL_PASSWORD"]
 
 
+def test_can_get_connection_params_from_env_vars_with_prefix():
+    """It can get connection parameters from env params"""
+    environ["MYSQL_UAU_HOST"] = "host"
+    environ["MYSQL_UAU_PORT"] = "4567"
+    environ["MYSQL_UAU_USER"] = "uauser"
+    environ["MYSQL_UAU_PASSWORD"] = "such_pass"
+
+    connection_helper = SqlConnector(prefix="UAU")
+
+    db_params = connection_helper.db_params_from_env_file()
+
+    assert db_params.host == environ["MYSQL_UAU_HOST"]
+    assert db_params.port == int(environ["MYSQL_UAU_PORT"])
+    assert db_params.user == environ["MYSQL_UAU_USER"]
+    assert db_params.password == environ["MYSQL_UAU_PASSWORD"]
+
+
 def test_can_create_connection_to_db():
     """It can crete a db connection"""
     connection_helper = SqlConnector()
