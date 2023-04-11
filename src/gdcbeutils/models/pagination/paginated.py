@@ -9,8 +9,8 @@ from pydantic import BaseModel, validator
 class Pagination(BaseModel):
     """Defines a pagination model"""
 
-    page: int
-    per_page: int
+    page: int = 1
+    per_page: int = 20
 
     @classmethod
     def from_params(cls, obj: Dict[str, Any] | None = None):
