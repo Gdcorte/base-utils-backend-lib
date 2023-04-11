@@ -133,7 +133,7 @@ def test_mongo_db_with_seed(
     seed_files: List[str] | None = None,
 ) -> Iterator[None]:
     if not db_name:
-        db_name = environ["MYSQL_DB"]
+        db_name = environ["MONGO_DB"]
 
     insert_docs_from_file_list(
         db_name=db_name,

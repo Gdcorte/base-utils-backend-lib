@@ -29,3 +29,6 @@ class Pagination(BaseModel):
         if value <= 0:
             return 1
         return value
+
+    def start_index(self):
+        return (self.page - 1) * self.per_page
